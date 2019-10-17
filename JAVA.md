@@ -13,5 +13,5 @@ public static void main(String[] args) {
     new Thread(() -> System.out.println("Hello world!"));
 }
 ```
-Runnable接口
+## Runnable接口
 ![Runnable](/images/Runnable.png)

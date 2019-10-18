@@ -79,7 +79,7 @@ class User {
 ```java
 public class TestGenericMethod {
     // 泛型方法printArray
-    public static < E > void printArray(E[] inputArray) {
+    public static <E> void printArray(E[] inputArray) {
         // 输出数组元素            
         for(E element : inputArray) {
             System.out.printf("%s ", element);

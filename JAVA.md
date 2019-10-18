@@ -108,7 +108,7 @@ public class TestGenericMethod {
 ### 类型参数有界的泛型方法
 
 ```java
-public class MaximumTest {
+public class TestMaximum {
     // 比较三个值并返回最大值，此处类型T限制为Comparable的子类
     public static <T extends Comparable<T>> T maximum(T x, T y, T z) {
         T max = x; // 假设x是初始最大值
@@ -129,4 +129,30 @@ public class MaximumTest {
     }
 }
 ```
+
 ### 泛型类
+
+```java
+public class Box<T> {
+    private T t;
+ 
+    public void add(T t) {
+        this.t = t;
+    }
+
+    public T get() {
+        return t;
+    }
+
+    public static void main(String[] args) {
+        Box<Integer> integerBox = new Box<Integer>();
+        Box<String> stringBox = new Box<String>();
+ 
+        integerBox.add(new Integer(10));
+        stringBox.add(new String("Bruce wayne"));
+ 
+        System.out.printf("整型值为:%d\n\n", integerBox.get());
+        System.out.printf("字符串为:%s\n", stringBox.get());
+    }
+}
+```

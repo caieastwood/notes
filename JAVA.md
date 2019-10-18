@@ -166,7 +166,7 @@ public class TestGeneric {
     public static void getData(List<?> data) {
         System.out.println("data :" + data.get(0));
     }
-    
+    // 限制了List中的类型只能是Number类及其子类
     public static void getUperNumber(List<? extends Number> data) {
         System.out.println("data :" + data.get(0));
     }

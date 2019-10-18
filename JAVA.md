@@ -13,11 +13,12 @@ public static void main(String[] args) {
     new Thread(() -> System.out.println("Hello world!"));
 }
 ```
+使用Lambda表达式创建线程的时候，并不关心接口名，方法名，参数名。我们只关注他的参数类型，参数个数，返回值。Lambda表达式返回的是接口的实例对象。
+
 ### Runnable接口
 
 ![Runnable](/images/Runnable.png)
-
-函数式编程接口的特点是：只有一个抽象方法
+`@FunctionalInterface`表示这是一个函数式编程接口
 
 ### 方法引用
 ```java

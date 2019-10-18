@@ -28,8 +28,12 @@ public static void main(String[] args) {
 public class Demo {
     public static void main(String[] args) {
         // 一个入参，无返回值
-        Consumer<String> consumerLambda = s-> System.out.println(s);
+        Consumer<String> consumerLambda = s -> System.out.println(s);
         consumerLambda.accept("Bruce Wayne1");
+        
+        // 两个入参，无返回值
+        BiConsumer<String, Integer> biConsumerLambda = (s, i) -> System.out.println(s+i);
+        biConsumerLambda.accept("Bruce wayne", 11);
 
         // 无入参，有返回值
         Supplier<String> supplierLambda = () -> "Bruce wayne2";

@@ -167,6 +167,7 @@ public class TestGeneric {
         System.out.println("data :" + data.get(0));
     }
     // 限制了List中的类型只能是Number类及其子类
+    // 下限通过形如List<? super Number>来定义，表示类型只能接受Number及其三层父类类型，如Object类型的实例
     public static void getUperNumber(List<? extends Number> data) {
         System.out.println("data :" + data.get(0));
     }
@@ -185,8 +186,8 @@ public class TestGeneric {
         getData(number);
         
         //getUperNumber(name); // 出错，name这个List中的成员不属于Number类及其子类
-        getUperNumber(age); // 2
-        getUperNumber(number); // 3
+        getUperNumber(age);
+        getUperNumber(number);
     }
 }
 ```

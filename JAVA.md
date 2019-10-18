@@ -13,7 +13,7 @@ public static void main(String[] args) {
     new Thread(() -> System.out.println("Hello world!"));
 }
 ```
-使用Lambda表达式创建线程的时候，并不关心接口名，方法名，参数名。我们只关注他的参数类型，参数个数，返回值。Lambda表达式返回的是接口的实例对象。
+> 使用Lambda表达式创建线程的时候，并不关心接口名，方法名，参数名。我们只关注他的参数类型，参数个数，返回值。Lambda表达式返回的是接口的实例对象。
 
 ### Runnable接口
 

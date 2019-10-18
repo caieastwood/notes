@@ -267,5 +267,6 @@ public class TestDefault {
 		Vehicle vehicle = new Car();
 		vehicle.print();
 	}
+	
 }
 ```

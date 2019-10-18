@@ -191,3 +191,81 @@ public class TestGeneric {
     }
 }
 ```
+
+## default关键字
+
+> 用在接口的声明，表示接口可以有实现方法，并且不需要实现类去实现其方法
+
+### 语法
+
+```java
+public interface Vehicle {
+    default void print(){
+        System.out.println("我是一辆车!");
+    }
+}
+```
+
+### 继承多个接口的情况
+
+```java
+interface Vehicle {
+    default void print() {
+        System.out.println("我是一辆车!");
+    }
+}
+	 
+interface FourWheeler {
+    default void print() {
+        System.out.println("我是一辆四轮车!");
+    }
+}
+
+public class Car implements Vehicle, FourWheeler {
+    // 第一个解决方案是创建自己的默认方法，来覆盖重写接口的默认方法
+    public void print() {
+        System.out.println("我是一辆四轮汽车!");
+    }
+    /* 第二种解决方案可以使用super来调用指定接口的默认方法
+    public void print() {
+        Vehicle.super.print();
+    }
+    */
+}
+```
+
+### 静态默认方法
+
+```java
+interface Vehicle {
+	default void print() {
+		System.out.println("我是一辆车!");
+	}
+	// 静态方法
+	static void blowHorn() {
+		System.out.println("按喇叭!");
+	}
+}
+	 
+interface FourWheeler {
+	default void print() {
+		System.out.println("我是一辆四轮车!");
+	}
+}
+
+class Car implements Vehicle, FourWheeler {
+	public void print() {
+		Vehicle.super.print();
+		FourWheeler.super.print();
+		Vehicle.blowHorn();
+		System.out.println("我是一辆汽车!");
+	}
+}
+
+public class TestDefault {
+	public static void main(String args[]){
+		Vehicle vehicle = new Car();
+		vehicle.print();
+	}
+}
+```

@@ -27,14 +27,22 @@ public static void main(String[] args) {
 ```java
 public class Demo {
     public static void main(String[] args) {
+		// 一个入参，无返回值
+		Consumer<String> consumerLambda = s-> System.out.println(s);
+		consumerLambda.accept("Bruce Wayne1");
+		
+		// 无入参，有返回值
+		Supplier<String> supplierLambda = () -> "Bruce wayne2";
+		System.out.println(supplierLambda.get());
+		
         // 静态方法引用--通过类名调用
         Consumer<String> consumerStatic = User::myNameStatic;
-        consumerStatic.accept("Bruce Wayne");
+        consumerStatic.accept("Bruce Wayne3");
 
         // 实例方法引用--通过实例调用
         User user = new User();
         Consumer<String> consumerInstance = user::myNameInstance;
-        consumer.accept("Batman");
+        consumerInstance.accept("Bruce Wayne4");
 
         // 构造方法方法引用--无参数
         Supplier<User> batman = User::new;

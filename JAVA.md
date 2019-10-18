@@ -14,4 +14,7 @@ public static void main(String[] args) {
 }
 ```
 ### Runnable接口
+
 ![Runnable](/images/Runnable.png)
+
+函数式编程接口的特点是：只有一个抽象方法

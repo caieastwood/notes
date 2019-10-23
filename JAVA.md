@@ -19,7 +19,7 @@ public static void main(String[] args) {
 
 ### Runnable接口
 
-![Runnable](/images/Runnable.png)
+![Runnable](./images/Runnable.png)
 
 > `@FunctionalInterface`表示这是一个函数式编程接口
 

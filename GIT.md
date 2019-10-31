@@ -21,3 +21,7 @@
 `git config --global user.email "you@example.com"`
 
 `git config --global user.name "Your Name"`
+
+### 修改commit信息
+
+`git commit --amend`

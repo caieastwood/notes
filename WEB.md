@@ -10,3 +10,5 @@
   
 > URN(Uniform Resource Name)：  
 人的名字是URN，因为可以通过URN确定这个人的身份，即特定命名空间（名字）下的内容。
+
+> URL, URN都是URI, 但URI不一定是URL, URN

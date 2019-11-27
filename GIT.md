@@ -32,7 +32,7 @@
 4 `git push --force origin master` 如commit已经push到remote，则需要重新push一次  
 
 ### 挑拣
-`git cherry-pick xxxxxx` 挑拣其他分支的某个提交的内容合并到本分支并自动提交
+`git cherry-pick xxxxxx` 挑拣其他分支的某个提交的内容合并到本分支并自动提交  
 `git cherry-pick -n xxxxxx` 挑拣其他分支的某个提交的内容合并到本分支，加上-n之后则不自动提交  
-`git cherry-pick -e xxxxxx` 挑拣其他分支的某个提交的内容合并到本分支，加上-e之后则会重新编辑提交信息
+`git cherry-pick -e xxxxxx` 挑拣其他分支的某个提交的内容合并到本分支，加上-e之后则会重新编辑提交信息  
   

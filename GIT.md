@@ -56,3 +56,28 @@ cherry-pick Z -m 2，表夫Z的父节点为第二个父节点，即Y，此时pic
 如果远程分支是受保护的，即不允许force push，则需要产生一个新的commit来撤销之前的commit（可以跨过已提交的commit），则使用revert命令  
 `git revert commit1...` 回滚一条或多条commit，回滚后改动自动提交  
 `git revert -n commit1...` 回滚一条或多条commit，-n即--no-commit，回滚的改动不自动提交，会将回滚的commit放到stage区，需要手动git commit一下  
+
+### branch
+`git branch -d xxxx` 即git branch --delete，会检查commit是否有merge，如果没有则报错提示没merge会丢失改动  
+`git branch -D xxxx` 即git branch --delete --force，强制删除，不检查merge状态  
+`git push origin --delete xxxx` 删除远程分支  
+
+### pull push fetch merge
+FETCH_HEAD为./git/FETCH_HEAD的一个文件，指向目前已从远程仓库拉下来的分支的末端版本  
+`git fetch origin` 将远程仓库的更新全部拉到本地  
+`git fetch origin xxxx` 将远程仓库的某个分支的更新拉到本地  
+`git pull` 等效于git fetch origin xxxx，再执行git merge FETCH_HEAD  
+`git pull origin xxxx` 将远程分支拉到当前分支  
+`git pull origin remoteBranch:localBranch` 将远程分支拉到本地的指定分支  
+举例说明：将远程origin仓库的xx分支合并到本地的yy分支：  
+第一种方法：  
+1.git fetch origin xx  
+2.git checkout yy  
+3.git merge FETCH_HEAD  
+第二种方法：  
+1.git checkout yy  
+2.git pull origin xx  
+第三种方法：  
+1.git pull  
+2.git checkout yy  
+3.git merge xx  

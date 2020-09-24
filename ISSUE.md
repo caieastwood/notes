@@ -50,3 +50,9 @@ full xml: /archiveEnc/XMLArchive/
 
 # 环境
 cdca: team19
+
+# idea中maven项目子工程无法继承父工程版本号
+除了父工程必须加上<dependencyManagement>标签外，如果子工程的依赖继承显示为unknown则可能是复制过来的<dependency>字符编码格式不同，此时通过手动导入而不是从复制进去可以解决问题  
+
+# junit测试中使用TemporaryFolder然后创建文件报无法找到指定路径异常
+需要连子文件夹一起创建  

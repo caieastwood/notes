@@ -143,10 +143,10 @@ She despised people who flattered her.（缩小了people的范围）
 9.结果状语从句：so...that，such...that  
 ## 名词性从句
 引导词：  
-1.that（that不在做代词了，他什么也不是，无实意，不做成分）  
-2.whether/if（是否）  
-3.what, whatever, who, whoever, whom, whose, whichever, whomever（连接代词）  
-4.when, where, how, why, whatever, whoever, whichever, whomever（连接副词）  
+1. that（that不在做代词了，他什么也不是，无实意，不做成分）  
+2. whether/if（是否）  
+3. what, whatever, who, whoever, whom, whose, whichever, whomever（连接代词）  
+4. when, where, how, why, whatever, whoever, whichever, whomever（连接副词）  
 ### 主语从句
 That she loves me（主语） is true.（That she loves me）  
 ### 同位语从句

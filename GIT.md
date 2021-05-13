@@ -1,20 +1,18 @@
 ## Git
 
-### 生成SSH key
-`ssh-keygen -t rsa -b 4096 -C "your_email@example.com"`
+### SSH key
+`cat ~/.ssh/id_rsa.pub` 查看SSH keys
 
-### 查看SSH keys公钥
-`cat ~/.ssh/id_rsa.pub`
+`ssh-keygen -t rsa -b 4096 -C "your_email@example.com"` 生成SSH key
 
-### 查看用户配置
-`git config --global -l`
+### 用户配置
+`git config --global -l` 查看用户配置
 
-### 编辑用户配置
-`git config --global -e`
+`git config --global -e` 编辑用户配置  
+`git config --global --edit` 编辑用户配置  
 
-### 添加配置项目
-`git config --global user.email "you@example.com"`
-`git config --global user.name "Your Name"`
+`git config --global user.email "you@example.com"` 更改user.email  
+`git config --global user.name "Your Name"` 更改user.name  
 
 ### 修改commit信息
 > 修改最后一次提交信息  
@@ -62,6 +60,19 @@ cherry-pick Z -m 2，表夫Z的父节点为第二个父节点，即Y，此时pic
 `git branch -D xxxx` 即git branch --delete --force，强制删除，不检查merge状态  
 `git push origin --delete xxxx` 删除远程分支  
 
+### push
+`git push --set-upstream origin test` 将本地新创建的名为test的分支push到名为origin的远程仓库  
+
+### checkout
+`git checkout -b xx` 创建名为xx的新分支，如果已存在同名分支，会报错  
+`git checkout -B xx` 创建名为xx的新分支，如果已存在同名分支，则覆盖原来的分支  
+
+### remote
+`git remote -v` 查看远程仓库  
+`git remote add origin xxx` 在本地添加远程仓库，并将此远程仓库命名为origin  
+`git remote rm origin` 删除名为origin的远程仓库  
+`git remote remove origin` 删除名为origin的远程仓库  
+
 ### pull push fetch merge
 FETCH_HEAD为./git/FETCH_HEAD的一个文件，指向目前已从远程仓库拉下来的分支的末端版本  
 `git fetch origin` 将远程仓库的更新全部拉到本地  
@@ -71,13 +82,13 @@ FETCH_HEAD为./git/FETCH_HEAD的一个文件，指向目前已从远程仓库拉
 `git pull origin remoteBranch:localBranch` 将远程分支拉到本地的指定分支  
 举例说明：将远程origin仓库的xx分支合并到本地的yy分支：  
 第一种方法：  
-1.git fetch origin xx  
-2.git checkout yy  
-3.git merge FETCH_HEAD  
+`git fetch origin xx`  
+`git checkout yy`  
+`git merge FETCH_HEAD`  
 第二种方法：  
-1.git checkout yy  
-2.git pull origin xx  
+`git checkout yy`  
+`git pull origin xx`  
 第三种方法：  
-1.git pull  
-2.git checkout yy  
-3.git merge xx  
+`git pull`  
+`git checkout yy`  
+`git merge xx`  

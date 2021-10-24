@@ -173,3 +173,31 @@ She despised people who flattered her.（缩小了people的范围）
 例子：  
 1. Tom proposed an idea that we should leave today.（that we should leave today.）
 2. I have a question whether he will join us.（whether he will join us.）
+## 疑问句
+- 一般疑问句/特殊疑问句
+### 一般疑问句
+不包含特殊疑问词  
+包含be动词或者情态动词，be动词或情态动词放前面，一般在主系表、主谓/主谓宾结构中：
+
+- 主系表：You are OK. -> Are you OK?
+- 主谓宾：You can speak English. -> Can you speak English?
+
+没有be动词也没有情态动词，将助动词（do/have）放前面：
+
+主谓宾：You love me. -> Do you love me?
+
+### 特殊疑问句
+特殊疑问词：what/who/whose/which/when/where/how/why
+
+疑问词（没有宾语的情况下代替宾语成分） + 宾语（可能被疑问词替代） + 助动词（be/情态动词/do/have） + 主谓（宾）
+
+- What did you do?（what代替了宾语的作用）
+- Which animals do you like?（含有宾语animals）
+## 倒装句
+全部倒装/部分倒装  
+
+### 全部倒装
+谓语完全放在主语前
+
+### 部分倒装
+只有助动词（hava/do/be/情态动词）放在主语前面，像一般疑问句的语序

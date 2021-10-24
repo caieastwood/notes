@@ -1,5 +1,30 @@
 ## 指令 --help
-> 查看某一个指令的用法
+查看某一个指令的用法
+
+## 命令英文全名
+- ls = list
+- cd = change directory
+- cp = copy
+- rm = remove
+- mv = move
+- pwd = print work directory
+- ps = process status
+- df = disk free
+- du = disk usage
+- mkdir = make directory
+- rmdir = remove directory
+- su = switch user
+- chown = change owner
+- chmod = change mode
+
+## 参数英文全名
+- -a = all
+- -l = list
+- -f = force
+- -h = human readable（将文件大小转成以人可读的大小单位，如：K、M、G）
+- -n = number
+- -u = user
+- -z = zip
 
 ## ls [-alhrtAFR]
 
@@ -8,8 +33,9 @@ ls -l 除文件名称外，亦将文件型态、权限、拥有者、文件大�
 ls -h 和ls -l一起使用时以K, M, G为单位表示文件大小  
 ls -r 将文件以相反次序显示(原定依英文字母次序)  
 ls -t 将文件依建立时间之先后次序列出  
-ls -A 同 -a ，但不列出 "." (目前目录) 及 ".." (父目录)  
+ls -A 同-a，但不列出 "." (当前目录) 及 ".." (父目录)  
 ls -F 在列出的文件名称后加一符号；例如可执行档则加 "*", 目录则加 "/"  
+ls -S 根据文件大小排序  
 ls -R 若目录下有文件，则以下之文件亦皆依序列出  
 
 ## cat/tac/more/less/head/tail/nl/od [file name]
@@ -63,8 +89,9 @@ cd - 最新一次更换目录前所在的目录
 cd / 根目录  
 cd ~ 当前用户的用户目录  
 
-## ps
-
-> 查看进程
+## ps 查看进程
 
 ps -ef | grep java 查看名为java的进程，其中ps -ef为查看进程，|表示管道命令，grep表示查找
+
+## find
+-name `find /etc -name "*.conf"` 查看/etc目录下面所有的.conf结尾的文件

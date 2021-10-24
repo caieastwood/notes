@@ -78,4 +78,10 @@
 504 Gateway Timeout：网关超时。  
 505 HTTP Version Not Supported：服务器不支持请求中指明的HTTP协议版本。  
 
+## SSL/TLS HTTPS 数字证书 数字签名
+SSL/TLS两者都是用于传输层的协议  
+HTTPS在HTTP的基础上使用了SSL/TLS进行数据传输  
+数字证书由CA机构颁发，用于验证服务器的身份  
+数字签名在CA机构将数字证书的信息通过CA私钥加密后得到，附在数字证书后面，自签名证书即非CA机构签名颁发的证书，一般用于本地测试  
+
 

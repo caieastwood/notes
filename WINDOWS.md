@@ -41,7 +41,11 @@ win10_x64_build10565上测试不可以右键修改图标和设置管理员运行
 可以在cmd下运行快捷方式(假如链接的是程序, 且运行命令是XXX.LNK)(win10_x64_build10565上测试通过)  
 
 ### junction
-替代mklink指令，不需要管理员权限运行cmd -> <https://www.jianshu.com/p/a31a679c500b>
+替代mklink指令，不需要管理员权限运行cmd -> <https://www.jianshu.com/p/a31a679c500b>  
+```
+// To create a junction c:\Program-Files for "c:\Program Files":
+junction c:\Program-Files "c:\Program Files"
+```
 
 ## CPU 核心 线程
 线程是个操作系统中虚拟的概念。一个线程是一个应用程序中的一部分，负责执行程序中部分计算任务。

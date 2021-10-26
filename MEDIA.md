@@ -29,3 +29,8 @@
 ## OBS Studio
 - github 'https://github.com/jp9000/obs-studio'
 - 官网 'https://obsproject.com/'
+
+## ScreenToGif
+- 官网 'https://www.screentogif.com/'
+- github 'https://github.com/NickeManarin/ScreenToGif'
+

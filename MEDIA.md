@@ -19,3 +19,7 @@
 
 ### 开始下载
 - 一般用来下载blob开头的视频源，可以通过f12 -> network找到m3u8格式的链接 'https://b.baobuzz.com/m3u8/32066.m3u8?sign=41ccce6d3639cd97613e6475751290f3'
+
+## ScreenToGif
+- 官网 'https://www.screentogif.com/'
+- github 'https://github.com/NickeManarin/ScreenToGif'

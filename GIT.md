@@ -14,6 +14,9 @@
 `git config --global user.email "you@example.com"` 更改user.email  
 `git config --global user.name "Your Name"` 更改user.name  
 
+### 切换home目录
+`setx HOME "/u"` 将home目录设置成/u，关掉终端重新打开可以看到效果  
+
 ### 修改commit信息
 > 修改最后一次提交信息  
 `git commit --amend`  

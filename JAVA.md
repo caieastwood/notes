@@ -81,6 +81,8 @@ class User {
 
 ## 泛型
 
+泛型方法 / 泛型类 / 泛型接口
+
 ### 泛型方法
 
 ```java
@@ -165,6 +167,12 @@ public class Box<T> {
 ```
 
 ### 类型通配符
+- 一般用在方法的传参是集合，并且不确定集合是什么类型？
+- <T> 和 <?> 的区别
+  - <T> 主要用于类或方法上，<?> 主要用于变量上
+  - <T> 可以认为是一个确定的类，<?> 可以认为是Object
+
+
 ```java
 import java.util.*;
  
@@ -276,3 +284,101 @@ public class TestDefault {
     }
 }
 ```
+
+## Annotation
+
+- @interface 表示实现 java.lang.annotation.Annotation 接口，即表示这是一个注解。
+- 1 个 Annotation 必须和 1 个 RetentionPolicy 关联，用 @Retention 指定。
+- 1 个 Annotation 必须和 1~n 个 ElementType 关联，用 @Target 指定。
+- 1 个 Annotation 可以包含参数，在使用注解时指定入参。
+
+```java
+@Target({TYPE, FIELD, METHOD, PARAMETER, CONSTRUCTOR, LOCAL_VARIABLE})
+@Retention(RetentionPolicy.SOURCE)
+public @interface SuppressWarnings {
+    String[] value();
+}
+
+public class SuppressWarningTest {
+
+    // 由于 Date 被 @Deprecated 标注，在调用 new Date() 的方法添加 @SuppressWarnings 注解表示对 deprecation 的警告保持沉默
+    // @SuppressWarnings 的 value 包含 deprecation，unchecked，all 等
+    @SuppressWarnings(value={"deprecation"})
+    public static void doSomething(){
+        Date date = new Date(113, 8, 26);
+        System.out.println(date);
+    }
+
+    public static void main(String[] args) {
+        doSomething();
+    }
+}
+```
+
+# JVM
+
+- JAVA 对象的创建过程
+  - 类加载检查 -> 分配内存 -> 初始化零值 -> 设置对象头 -> 执行 init 方法
+
+## 内存划分（运行时数据区）
+- 方法区（JDK 1.8之后删除，同时增加元数据区，并且从运行时数据区域移到直接内存）
+  - 被所有线程共享
+  - 存储被虚拟机加载的元数据（Meta），包括类信息、常量、静态变量、即时编译器编译后的代码等数据
+  - 包含常量池
+  - 曾经 GC 分代收集拓展到了方法区，所以曾被称之为永久代，后在 Oracle JDK8 中移除，同时增加了元数据区（Metaspace）
+
+- 堆
+  - 被所有线程共享，虚拟机启动时生成堆
+  - 几乎所有 JAVA 对象实例都是被直接分配到堆上
+  - 物理不连续，逻辑连续
+  - JDK 1.7之后常量池放在了堆里
+  - GC的主要作用区域
+  - GC过程会被划分为两个不同的区域：新生代（Young）、老年代（Old）
+    - 新生代，又被划分成三个区域
+      - Eden、From Survivor(S0)、To Survivor(S1)
+      - Eden 和 S0/S1 的比值大概是 8:1:1
+      - 一般新对象会被首先分配到 Eden 区，然后经过 GC 后如果对象还存活，则会到 S0 或者 S1，并且年龄加1，年龄大于15（默认为15），最后会到老年代
+    - 老年代
+
+- JAVA虚拟机栈
+  - 线程私有，线程创建的同时创建JAVA虚拟机栈，生命周期与线程一致
+  - 存储方法被调用直至执行完成所需的数据，包括局部变量、程序运行状态、方法返回值、方法出口等
+  - 每次方法调用进行压栈，方法结束调用时出栈
+
+- 本地方法栈
+  - 线程私有，线程创建的同时创建JAVA虚拟机栈，生命周期与线程一致
+  - 与JAVA虚拟机栈类似
+  - JAVA虚拟机栈在执行JAVA方法（字节码）时使用，本地方法栈在调用Native时使用
+
+- 程序计数器
+  - 每个线程都有一个程序计数器
+  - 存储当前正在执行JAVA方法的JVM指令地址，即字节码的行号
+  - 如果正在执行Native方法，则这个计数器为空
+  - 该内存区域是唯一一个在Java虚拟机规范中没有规定任何OOM情况的内存区域
+
+## GC：垃圾回收，清理内存
+### 垃圾回收类型
+一种分法是
+- Scavenge GC（Minor GC）：指发生新生代的垃圾收集动作，Minor GC 非常频繁，回收速度一般也比较快
+- Full GC（Major GC）：指发生在老年代的GC，出现了 Major GC 经常会伴随至少一次的 Minor GC（并非绝对）
+  - Young
+  - Tenured
+  - Perm
+另一种分法是
+- Minor GC 针对新生代GC
+- Major GC 针对旧生代GC
+- Full Gc 针对新生代GC、旧生代GC、老年代GC
+### 判断对象是否死亡
+- 引用计数法：给对象中添加一个引用计数器，每当有一个地方引用它，计数器就加1；当引用失效，计数器就减1；任何时候计数器为0的对象就是不可能再被使用的。
+- 可达性分析算法：这个算法的基本思想就是通过一系列的称为 “GC Roots” 的对象作为起点，从这些节点开始向下搜索，节点所走过的路径称为引用链，当一个对象到 GC Roots 没有任何引用链相连的话，则证明此对象是不可用的。
+
+### 垃圾回收算法
+> “GC Root” 指的是 GC 的起点
+- 复制（Copying）：
+- 标记-清除（Mark-Sweep）：
+- 标记-压缩（Mark-Compact）：
+- 标记-清除-压缩（Mark-Sweep-Compact）：
+- 分代收集算法：比如在新生代中，每次收集都会有大量对象死去，所以可以选择复制算法，只需要付出少量对象的复制成本就可以完成每次垃圾收集。而老年代的对象存活几率是比较高的，而且没有额外的空间对它进行分配担保，所以我们必须选择“标记-清除”或“标记-整理”算法进行垃圾收集。
+
+### 垃圾收集器
+> 垃圾收集算法是内存回收的方法论，垃圾收集器是内存回收的具体实现。
